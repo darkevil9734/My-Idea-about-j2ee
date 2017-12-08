@@ -24,4 +24,16 @@ public class UserDAO implements UserDAOLocal {
 		return (User) q.getSingleResult();
 	}
 
+	@Override
+	public boolean dang_ky(String username, String password, String ho_ten) {
+		try {
+			String sql = "INSERT INTO user(username, password, ho_ten) VALUES(?,?,?,3)";
+			em.createNativeQuery(sql);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	
 }

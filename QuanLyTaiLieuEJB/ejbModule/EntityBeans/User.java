@@ -4,13 +4,12 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
-/**
- * The persistent class for the user database table.
- * 
- */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@NamedQueries({
+	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+	@NamedQuery(name="User.Login", query="SELECT u FROM User u WHERE u.username=:username AND u.password =:password")
+	//@NamedQuery(name="User.Register", query="")
+})
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 

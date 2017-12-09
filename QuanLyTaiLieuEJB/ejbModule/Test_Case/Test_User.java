@@ -12,16 +12,13 @@ import SessionBeans.UserDAOLocal;
 
 
 public class Test_User {
+	@EJB
+	private UserDAOLocal u;
 	
-	@Before
-	public void prepare() {
-		UserDAOLocal u = null;
-		//.Func.
-	}
 	
 	@Test
 	public void size() {
-		prepare();
-		assertEquals(2, 2);
+		int dk = u.dang_ky("admin1", "admin1", "nguyen");
+		//assertTrue(dk!=0);
 	}
 }

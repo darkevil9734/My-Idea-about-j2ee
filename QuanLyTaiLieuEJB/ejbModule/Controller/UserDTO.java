@@ -10,9 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sun.faces.action.RequestMapping;
 
+import SessionBeans.UserDAOLocal;
+
 @Controller
 
 public class UserDTO {
+	@EJB
+	private UserDAOLocal u;
+	
 	@RequestMapping("/log-in")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) {
 		String username = request.getParameter("txtUsername");

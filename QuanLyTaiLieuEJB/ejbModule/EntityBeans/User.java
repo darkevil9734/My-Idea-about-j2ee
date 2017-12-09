@@ -5,11 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
-	@NamedQuery(name="User.Login", query="SELECT u FROM User u WHERE u.username=:username AND u.password =:password"),
-	@NamedQuery(name="User.ResetPass", query="SELECT u FROM User u WHERE u.username=:username AND u.password =:password")
-})
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,12 +20,12 @@ public class User implements Serializable {
 	private String username;
 
 	//bi-directional many-to-one association to Binhluan
-	@OneToMany(mappedBy="user")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy="user")
 	private List<Binhluan> binhluans;
 
 	//bi-directional many-to-one association to Loai
 	@ManyToOne
-	@JoinColumn(name="idLoai", insertable=false, updatable=false)
+	@JoinColumn(name="idLoai")
 	private Loai loai;
 
 	public User() {

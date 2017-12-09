@@ -25,15 +25,21 @@ public class UserDAO implements UserDAOLocal {
 	}
 
 	@Override
-	public boolean dang_ky(String username, String password, String ho_ten) {
+	public boolean dang_ky(User u) {
 		try {
-			String sql = "INSERT INTO user(username, password, ho_ten) VALUES(?,?,?,3)";
-			em.createNativeQuery(sql);
+			String sql = "INSERT INTO `ql_hocsinh`.`user` (`username`, `password`, `ho_ten`, `idLoai`) VALUES (?, ?, ?, '3')";
+			Query q = em.createNativeQuery(sql);
+			q.setParameter(1, u.getUsername());
+			q.setParameter(2, u.getPassword());
+			q.setParameter(3, u.getHoTen());
+			
+			q.executeUpdate();
 			return true;
 		} catch (Exception e) {
-			return false;
+			System.out.println(e);
 		}
+		return false;
 	}
-
+	
 	
 }

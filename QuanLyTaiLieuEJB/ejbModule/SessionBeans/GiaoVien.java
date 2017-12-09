@@ -8,10 +8,11 @@ import javax.persistence.Query;
 import EntityBeans.User;
 
 @Stateless
-public class UserDAO implements UserDAOLocal {
-    @PersistenceContext
-    EntityManager em;
-	public UserDAO() {
+public class GiaoVien implements GiaoVienLocal {
+	@PersistenceContext
+	EntityManager em;
+	
+    public GiaoVien() {
 
     }
 
@@ -25,13 +26,13 @@ public class UserDAO implements UserDAOLocal {
 	}
 
 	@Override
-	public boolean dang_ky(User u) {
-		String sql = "INSERT INTO `ql_hocsinh`.`user` (`username`, `password`, `ho_ten`, `idLoai`) VALUES (?, ?, ?, '3')";
+	public boolean dang_ky(User gv) {
+		String sql = "INSERT INTO `ql_hocsinh`.`user` (`username`, `password`, `ho_ten`, `idLoai`) VALUES (?, ?, ?, '2')";
 		Query q = em.createNativeQuery(sql);
 		
-		q.setParameter(1, u.getUsername());
-		q.setParameter(2, u.getPassword());
-		q.setParameter(3, u.getHoTen());
+		q.setParameter(1, gv.getUsername());
+		q.setParameter(2, gv.getPassword());
+		q.setParameter(3, gv.getHoTen());
 		
 		if(q.executeUpdate() != 0) {
 			return true;
@@ -41,6 +42,6 @@ public class UserDAO implements UserDAOLocal {
 		}
 		
 	}
-	
-	
+
+    
 }

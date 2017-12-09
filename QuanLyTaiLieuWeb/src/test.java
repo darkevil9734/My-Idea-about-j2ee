@@ -37,18 +37,18 @@ public class test extends HttpServlet {
 		String pass = "admin1";
 		String ho_ten = "nguyen";
 		
-		User u_dk = null;
+		User u_dk = new User();
 		u_dk.setUsername(user);
 		u_dk.setPassword(pass);
 		u_dk.setHoTen(ho_ten);
 		
-		boolean dk = u.dang_ky(u_dk);
-		if(dk == true) {
-			System.out.println("Thanh cong");
+		if(u.dang_ky(u_dk)) {
+			System.out.println("thanh cong");
 		}
 		else {
-			System.out.println("failed");
+			System.out.println("loi");
 		}
+		
 	}
 
 	/**
